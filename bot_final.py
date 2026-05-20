@@ -17,7 +17,7 @@ def run_web():
     app.run(host="0.0.0.0", port=port)
 # ------------------------------------------------
 
-TOKEN = "8696750780:AAE64tA05ekvFJKvr_zWB9qHXCSCJf0yw20"
+TOKEN = "8696750780:AAE64tAO5ekvFJKvr_zWB9qHXCSCJfOyw20"
 CANAL_ID = -1003945865350
 
 bot = telebot.TeleBot(TOKEN)
