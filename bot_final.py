@@ -28,7 +28,7 @@ def gerar_grid():
     grid = ['🟦'] * 22 + ['⭐'] * 3
     random.shuffle(grid)
     linhas = [grid[i:i+5] for i in range(0, 25, 5)]
-    return "\n".join(["".join(linha) for line in linhas])
+    return "\n".join(["".join(linha) for linha in linhas])
 
 def gerar_sinal():
     minas = random.randint(1, 3)
