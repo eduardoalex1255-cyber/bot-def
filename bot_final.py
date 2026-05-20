@@ -4,7 +4,7 @@ from flask import Flask
 import telebot
 import time
 import random
-
+from datetime import datetime, timedelta
 # --- SISTEMA PARA O RENDER NÃO DESLIGAR O BOT ---
 app = Flask(__name__)
 
@@ -33,12 +33,13 @@ def gerar_grid():
 def gerar_sinal():
     minas = random.randint(1, 3)
     tentativas = random.randint(2, 3)
+    hora_validade = (datetime.now() + timedelta(minutes=5)).strftime("%H:%M")
     grid_visual = gerar_grid()
     
     return (
         f"💣 **MINES HACKOWANY** 💣\n\n"
         f"🎯 Miny: `{minas}`\n"
-        f"⏳ Ważny do: `19:50`\n"
+        f"⏳ Ważny do: `{hora_validade}`\n"
         f"📊 Liczba prób: `{tentativas}`\n\n"
         f"{grid_visual}\n\n"
         f"🔗 **PLATFORMA HACKOWANA:** [TUTAJ](https://leon-poland.casino/registration?qtag=a44724_t59815_c3035_s)"
@@ -52,7 +53,7 @@ threading.Thread(target=run_web, daemon=True).start()
 try:
     while True:
         texto_sinal = gerar_sinal()
-        bot.send_message(CANAL_ID, texto_sinal, parse_mode="Markdown")
+        bot.send_message(CANAL_ID, texto_sinal, parse_mode="Markdown", disable_web_page_preview=True)
         print("Sinal enviado com sucesso!")
         
         # Espera entre 300s (5min) e 420s (7min)
